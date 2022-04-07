@@ -1,0 +1,233 @@
+@startuml
+set namespaceSeparator ::
+
+abstract class "differential_equations::algorythms::solving_algorythm.dart::SolvingAlgorithm" {
+  +List<double> calculate()
+  +String getName()
+}
+
+class "differential_equations::algorythms::solving_algorythm.dart::EulerMethod" {
+  +List<double> calculate()
+  +String getName()
+}
+
+"differential_equations::algorythms::solving_algorythm.dart::SolvingAlgorithm" <|-- "differential_equations::algorythms::solving_algorythm.dart::EulerMethod"
+
+class "differential_equations::algorythms::solving_algorythm.dart::ImprovedEulerMethod" {
+  +List<double> calculate()
+  +String getName()
+}
+
+"differential_equations::algorythms::solving_algorythm.dart::SolvingAlgorithm" <|-- "differential_equations::algorythms::solving_algorythm.dart::ImprovedEulerMethod"
+
+class "differential_equations::algorythms::solving_algorythm.dart::RungeKuttaMethod" {
+  +List<double> calculate()
+  +String getName()
+}
+
+"differential_equations::algorythms::solving_algorythm.dart::SolvingAlgorithm" <|-- "differential_equations::algorythms::solving_algorythm.dart::RungeKuttaMethod"
+
+class "differential_equations::algorythms::solving_algorythm.dart::AnalyticalMethod" {
+  +List<double> calculate()
+  +String getName()
+}
+
+"differential_equations::algorythms::solving_algorythm.dart::SolvingAlgorithm" <|-- "differential_equations::algorythms::solving_algorythm.dart::AnalyticalMethod"
+
+class "differential_equations::bloc::graph_bloc.dart::GraphBloc" {
+  +Solver solver
+  -Future<void> _onChangeInputs()
+}
+
+"differential_equations::bloc::graph_bloc.dart::GraphBloc" o-- "differential_equations::solver.dart::Solver"
+"bloc::src::bloc.dart::Bloc" <|-- "differential_equations::bloc::graph_bloc.dart::GraphBloc"
+
+abstract class "differential_equations::bloc::graph_bloc.dart::GraphEvent" {
+}
+
+class "differential_equations::bloc::graph_bloc.dart::GraphChangeInputs" {
+  +InputData inputData
+  +int nMin
+  +int nMax
+}
+
+"differential_equations::bloc::graph_bloc.dart::GraphChangeInputs" o-- "differential_equations::model::input_data.dart::InputData"
+"differential_equations::bloc::graph_bloc.dart::GraphEvent" <|-- "differential_equations::bloc::graph_bloc.dart::GraphChangeInputs"
+
+abstract class "differential_equations::bloc::graph_bloc.dart::GraphState" {
+}
+
+class "differential_equations::bloc::graph_bloc.dart::GraphInitial" {
+}
+
+"differential_equations::bloc::graph_bloc.dart::GraphState" <|-- "differential_equations::bloc::graph_bloc.dart::GraphInitial"
+
+class "differential_equations::bloc::graph_bloc.dart::GraphRedraw" {
+  +SolutionPointsBundle pointsBundle
+  +TotalErrorsBundle totalErrors
+}
+
+"differential_equations::bloc::graph_bloc.dart::GraphRedraw" o-- "differential_equations::model::points_bundle.dart::SolutionPointsBundle"
+"differential_equations::bloc::graph_bloc.dart::GraphRedraw" o-- "differential_equations::model::points_bundle.dart::TotalErrorsBundle"
+"differential_equations::bloc::graph_bloc.dart::GraphState" <|-- "differential_equations::bloc::graph_bloc.dart::GraphRedraw"
+
+class "differential_equations::bloc::graph_bloc.dart::GraphWaiting" {
+}
+
+"differential_equations::bloc::graph_bloc.dart::GraphState" <|-- "differential_equations::bloc::graph_bloc.dart::GraphWaiting"
+
+class "differential_equations::bloc::graph_bloc.dart::GraphBloc" {
+  +Solver solver
+  -Future<void> _onChangeInputs()
+}
+
+"differential_equations::bloc::graph_bloc.dart::GraphBloc" o-- "differential_equations::solver.dart::Solver"
+"bloc::src::bloc.dart::Bloc" <|-- "differential_equations::bloc::graph_bloc.dart::GraphBloc"
+
+abstract class "differential_equations::bloc::graph_bloc.dart::GraphEvent" {
+}
+
+class "differential_equations::bloc::graph_bloc.dart::GraphChangeInputs" {
+  +InputData inputData
+  +int nMin
+  +int nMax
+}
+
+"differential_equations::bloc::graph_bloc.dart::GraphChangeInputs" o-- "differential_equations::model::input_data.dart::InputData"
+"differential_equations::bloc::graph_bloc.dart::GraphEvent" <|-- "differential_equations::bloc::graph_bloc.dart::GraphChangeInputs"
+
+abstract class "differential_equations::bloc::graph_bloc.dart::GraphState" {
+}
+
+class "differential_equations::bloc::graph_bloc.dart::GraphInitial" {
+}
+
+"differential_equations::bloc::graph_bloc.dart::GraphState" <|-- "differential_equations::bloc::graph_bloc.dart::GraphInitial"
+
+class "differential_equations::bloc::graph_bloc.dart::GraphRedraw" {
+  +SolutionPointsBundle pointsBundle
+  +TotalErrorsBundle totalErrors
+}
+
+"differential_equations::bloc::graph_bloc.dart::GraphRedraw" o-- "differential_equations::model::points_bundle.dart::SolutionPointsBundle"
+"differential_equations::bloc::graph_bloc.dart::GraphRedraw" o-- "differential_equations::model::points_bundle.dart::TotalErrorsBundle"
+"differential_equations::bloc::graph_bloc.dart::GraphState" <|-- "differential_equations::bloc::graph_bloc.dart::GraphRedraw"
+
+class "differential_equations::bloc::graph_bloc.dart::GraphWaiting" {
+}
+
+"differential_equations::bloc::graph_bloc.dart::GraphState" <|-- "differential_equations::bloc::graph_bloc.dart::GraphWaiting"
+
+class "differential_equations::bloc::graph_bloc.dart::GraphBloc" {
+  +Solver solver
+  -Future<void> _onChangeInputs()
+}
+
+"differential_equations::bloc::graph_bloc.dart::GraphBloc" o-- "differential_equations::solver.dart::Solver"
+"bloc::src::bloc.dart::Bloc" <|-- "differential_equations::bloc::graph_bloc.dart::GraphBloc"
+
+abstract class "differential_equations::bloc::graph_bloc.dart::GraphEvent" {
+}
+
+class "differential_equations::bloc::graph_bloc.dart::GraphChangeInputs" {
+  +InputData inputData
+  +int nMin
+  +int nMax
+}
+
+"differential_equations::bloc::graph_bloc.dart::GraphChangeInputs" o-- "differential_equations::model::input_data.dart::InputData"
+"differential_equations::bloc::graph_bloc.dart::GraphEvent" <|-- "differential_equations::bloc::graph_bloc.dart::GraphChangeInputs"
+
+abstract class "differential_equations::bloc::graph_bloc.dart::GraphState" {
+}
+
+class "differential_equations::bloc::graph_bloc.dart::GraphInitial" {
+}
+
+"differential_equations::bloc::graph_bloc.dart::GraphState" <|-- "differential_equations::bloc::graph_bloc.dart::GraphInitial"
+
+class "differential_equations::bloc::graph_bloc.dart::GraphRedraw" {
+  +SolutionPointsBundle pointsBundle
+  +TotalErrorsBundle totalErrors
+}
+
+"differential_equations::bloc::graph_bloc.dart::GraphRedraw" o-- "differential_equations::model::points_bundle.dart::SolutionPointsBundle"
+"differential_equations::bloc::graph_bloc.dart::GraphRedraw" o-- "differential_equations::model::points_bundle.dart::TotalErrorsBundle"
+"differential_equations::bloc::graph_bloc.dart::GraphState" <|-- "differential_equations::bloc::graph_bloc.dart::GraphRedraw"
+
+class "differential_equations::bloc::graph_bloc.dart::GraphWaiting" {
+}
+
+"differential_equations::bloc::graph_bloc.dart::GraphState" <|-- "differential_equations::bloc::graph_bloc.dart::GraphWaiting"
+
+class "differential_equations::model::equation.dart::Equation" {
+  +double Function(double, double) derivative
+  +double Function(double, double, double) analyticalSolution
+}
+
+"differential_equations::model::equation.dart::Equation" o-- "null::double Function(double, double)"
+"differential_equations::model::equation.dart::Equation" o-- "null::double Function(double, double, double)"
+
+class "differential_equations::model::input_data.dart::InputData" {
+  +double x0
+  +double y0
+  +double X
+  +int N
+  +double gridCellSize
+  +InputData copyWith()
+}
+
+class "differential_equations::model::points_bundle.dart::SolutionPointsBundle" {
+  +List<double> xPoints
+  +Map<String, List<double>> solutionYPoints
+  +Map<String, List<double>> errorYPoints
+}
+
+class "differential_equations::model::points_bundle.dart::TotalErrorsBundle" {
+  +List<int> xPoints
+  +Map<String, List<double>> errorPoints
+}
+
+class "differential_equations::model::Strings.dart::Strings" {
+  {static} +String ANALYTICAL_METHOD
+  {static} +String EULER_METHOD
+  {static} +String IMPROVED_EULER_METHOD
+  {static} +String RUNGE_KUTTA_METHOD
+}
+
+class "differential_equations::solver.dart::Solver" {
+  +Equation equation
+  +SolvingAlgorithm analyticAlgorithm
+  -List<SolvingAlgorithm> _algorithms
+  +Future<SolutionPointsBundle> calculateGraphs()
+  -List<double> _calculateErrors()
+  +Future<TotalErrorsBundle> calculateTotalErrors()
+}
+
+"differential_equations::solver.dart::Solver" o-- "differential_equations::model::equation.dart::Equation"
+"differential_equations::solver.dart::Solver" o-- "differential_equations::algorythms::solving_algorythm.dart::SolvingAlgorithm"
+
+class "differential_equations::ui::app.dart::App" {
+  +Map<String, MaterialColor> colors
+  +TextEditingController x0Controller
+  +TextEditingController y0Controller
+  +TextEditingController nController
+  +TextEditingController XController
+  +TextEditingController nMinController
+  +TextEditingController nMaxController
+  -GlobalKey<FormState> _formKey
+  +Widget build()
+}
+
+"differential_equations::ui::app.dart::App" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"differential_equations::ui::app.dart::App" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "differential_equations::ui::app.dart::App"
+
+class "differential_equations::ui::main.dart::MyApp" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "differential_equations::ui::main.dart::MyApp"
+
+
+@enduml
